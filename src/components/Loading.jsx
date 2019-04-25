@@ -2,7 +2,7 @@ import React from 'react'
 
 function Loading() {
 	return (
-		<div className='loading' data-test='el-loading'>
+		<div className='loading' data-test='loading'>
 			<h1>Loading Data ...</h1>
 		</div>
 	)

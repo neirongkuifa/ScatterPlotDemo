@@ -13,7 +13,7 @@ import '../css/style.css'
 
 function Plot(props) {
 	return (
-		<div className='plot' data-test='el-scatterplot'>
+		<div className='plot' data-test='plot'>
 			<VictoryChart
 				theme={VictoryTheme.material}
 				// style={{ parent: { maxWidth: '70%' } }}
@@ -25,7 +25,7 @@ function Plot(props) {
 					/>
 				}>
 				<VictoryLegend
-					x={400}
+					x={300}
 					y={30}
 					orientation='horizontal'
 					gutter={20}

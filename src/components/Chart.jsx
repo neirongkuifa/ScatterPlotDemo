@@ -71,7 +71,7 @@ function Chart(props) {
 	}, [axisX, axisY, props.dataSets, dataSet])
 
 	return (
-		<div className='chart'>
+		<div className='chart' data-test='chart'>
 			<div className='bar u-relative'>
 				<h2 className='heading-secondary u-vertical-center'>{props.title}</h2>
 			</div>

@@ -25,7 +25,7 @@ function App() {
 	}, [])
 
 	return (
-		<div>
+		<div data-test='app'>
 			{isLoading ? (
 				<Loading data-test='cpn-loading' />
 			) : (

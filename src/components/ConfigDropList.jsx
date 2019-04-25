@@ -23,14 +23,19 @@ function ConfigDropList(props) {
 		props.handleSelect(e.target.value)
 	}
 	return (
-		<div className='config'>
+		<div className='config' data-test='configdroplist'>
 			<span className='config__title'>{props.title}: </span>
 			<select
 				className='config__options'
+				data-test='list'
 				value={option}
 				onChange={handleSelect}>
 				{props.options.map(item => (
-					<option className='config__option' value={item} key={item}>
+					<option
+						data-test='option'
+						className='config__option'
+						value={item}
+						key={item}>
 						{item}
 					</option>
 				))}

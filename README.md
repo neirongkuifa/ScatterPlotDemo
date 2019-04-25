@@ -1,8 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Overall Effect
+
+![](./effect.gif)
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Installs node modules dependencies. You must run this before you can run the demo app.
 
 ### `npm start`
 
