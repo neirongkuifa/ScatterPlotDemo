@@ -1,0 +1,9 @@
+.config {
+	display: inline-block;
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin: 0 2rem;
+	&__options {
+		width: 8rem;
+	}
+}

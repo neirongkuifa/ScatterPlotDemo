@@ -1,0 +1,54 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 10px; }
+
+body {
+  padding: 3rem;
+  box-sizing: border-box; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  font-weight: 700; }
+
+.u-relative {
+  position: relative; }
+
+.u-vertical-center {
+  position: absolute;
+  left: 1%;
+  top: 50%;
+  transform: translate(0, -50%); }
+
+.plot {
+  height: 75%;
+  background-color: #f7f7f7;
+  margin: 12px 8px 5px 8px;
+  border-radius: 5px; }
+
+.chart {
+  padding-top: 1px;
+  width: 85vw;
+  height: 80vh;
+  margin: 5rem auto;
+  border-radius: 5px;
+  box-shadow: 1rem 2rem 4rem rgba(0, 0, 0, 0.2); }
+
+.bar {
+  height: 10%;
+  background-color: #f7f7f7;
+  margin: 8px;
+  border-radius: 5px; }
+
+.config {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 2rem; }
+  .config__options {
+    width: 8rem; }
