@@ -1,6 +1,10 @@
 .plot {
-	height: 75%;
-	background-color: $color-grey-light-1;
-	margin: 12px 8px 5px 8px;
-	border-radius: 5px;
+	height: 80%;
+	padding: 5px;
+	&__content {
+		width: 100%;
+		height: 100%;
+		background-color: $color-grey-light-1;
+		border-radius: 5px;
+	}
 }

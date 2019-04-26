@@ -23,25 +23,27 @@ function ConfigBar(props) {
 	}
 	return (
 		<div className='bar u-relative' data-test='configbar'>
-			<div className='u-vertical-center'>
-				<ConfigDropList
-					title='Dataset'
-					data-test='cpn-configdroplist'
-					options={props.dataSetOptions}
-					handleSelect={handleSetDataSet}
-				/>
-				<ConfigDropList
-					title='ColumnX'
-					data-test='cpn-configdroplist'
-					options={props.columnXOptions}
-					handleSelect={props.setAxisX}
-				/>
-				<ConfigDropList
-					title='ColumnY'
-					data-test='cpn-configdroplist'
-					options={props.columnYOptions}
-					handleSelect={props.setAxisY}
-				/>
+			<div className='bar__content'>
+				<div className='u-vertical-center'>
+					<ConfigDropList
+						title='Dataset'
+						data-test='cpn-configdroplist'
+						options={props.dataSetOptions}
+						handleSelect={handleSetDataSet}
+					/>
+					<ConfigDropList
+						title='ColumnX'
+						data-test='cpn-configdroplist'
+						options={props.columnXOptions}
+						handleSelect={props.setAxisX}
+					/>
+					<ConfigDropList
+						title='ColumnY'
+						data-test='cpn-configdroplist'
+						options={props.columnYOptions}
+						handleSelect={props.setAxisY}
+					/>
+				</div>
 			</div>
 		</div>
 	)

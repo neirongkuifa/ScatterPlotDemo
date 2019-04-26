@@ -73,7 +73,9 @@ function Chart(props) {
 	return (
 		<div className='chart' data-test='chart'>
 			<div className='bar u-relative'>
-				<h2 className='heading-secondary u-vertical-center'>{props.title}</h2>
+				<div className='bar__content'>
+					<h2 className='heading-secondary u-vertical-center'>{props.title}</h2>
+				</div>
 			</div>
 			<ConfigBar
 				data-test='cpn-configbar'
