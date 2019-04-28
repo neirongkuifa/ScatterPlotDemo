@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import PropTypes from 'prop-types'
 
-import ConfigBar from './ConfigBar'
-import Plot from './Plot'
 import '../css/style.css'
+
+const ConfigBar = React.lazy(() => import('./ConfigBar'))
+const Plot = React.lazy(() => import('./Plot'))
 
 /**
  * Function component -- Top level container for configuration and plot
@@ -77,16 +78,20 @@ function Chart(props) {
 					<h2 className='heading-secondary u-vertical-center'>{props.title}</h2>
 				</div>
 			</div>
-			<ConfigBar
-				data-test='cpn-configbar'
-				setAxisX={setAxisX}
-				setAxisY={setAxisY}
-				setDataSet={setDataSet}
-				dataSetOptions={dataSetOptions}
-				columnXOptions={columnXOptions}
-				columnYOptions={columnYOptions}
-			/>
-			<Plot plotData={plotData} x={axisX} y={axisY} data-test='cpn-plot' />
+			<Suspense fallback={<div>Loading Configuration...</div>}>
+				<ConfigBar
+					data-test='cpn-configbar'
+					setAxisX={setAxisX}
+					setAxisY={setAxisY}
+					setDataSet={setDataSet}
+					dataSetOptions={dataSetOptions}
+					columnXOptions={columnXOptions}
+					columnYOptions={columnYOptions}
+				/>
+			</Suspense>
+			<Suspense fallback={<div>Loading Plot...</div>}>
+				<Plot plotData={plotData} x={axisX} y={axisY} data-test='cpn-plot' />
+			</Suspense>
 		</div>
 	)
 }
