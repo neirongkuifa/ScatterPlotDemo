@@ -3,7 +3,19 @@
 	font-size: 1.5rem;
 	font-weight: 600;
 	margin: 0 2rem;
+	max-width: 20%;
 	&__options {
 		width: 8rem;
+	}
+
+	&__input {
+		width: 8rem;
+	}
+
+	&__btn {
+		width: 5rem;
+		font-size: inherit;
+		font-weight: inherit;
+		line-height: 2.5rem;
 	}
 }

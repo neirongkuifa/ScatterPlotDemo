@@ -16,12 +16,29 @@ function Chart(props) {
 	const [dataSet, setDataSet] = useState('')
 	const [axisX, setAxisX] = useState('')
 	const [axisY, setAxisY] = useState('')
+	const [maxX, setMaxX] = useState(Number.POSITIVE_INFINITY)
+	const [maxY, setMaxY] = useState(Number.POSITIVE_INFINITY)
 
 	const [plotData, setPlotData] = useState([])
 
 	const [dataSetOptions, setDataSetOptions] = useState([])
 	const [columnXOptions, setColumnXOptions] = useState([])
 	const [columnYOptions, setColumnYOptions] = useState([])
+
+	const savePlot = () => {
+		props.setSavedPlots(prevState => {
+			prevState.push({
+				id: Date.now().toString(),
+				axisX,
+				axisY,
+				maxX,
+				maxY,
+				dataSet,
+				plotData
+			})
+			return prevState
+		})
+	}
 
 	// On dataSets change, update dataSetOptions and set current dataSet default to the first one.
 	useEffect(() => {
@@ -62,20 +79,33 @@ function Chart(props) {
 			const y_index = header.findIndex(title => title === axisY)
 
 			// TODO: Need furthur detailed information for polishing
-			const plotDataUpdate = rawData.map(item => ({
-				x: item[x_index] === '' ? 0 : parseFloat(item[x_index]),
-				y: item[y_index] === '' ? 0 : parseFloat(item[y_index])
-			}))
+			const plotDataUpdate = rawData.map(item => {
+				return {
+					x: item[x_index] === '' ? 0 : parseFloat(item[x_index]),
+					y: item[y_index] === '' ? 0 : parseFloat(item[y_index])
+				}
+			})
 
-			setPlotData(plotDataUpdate)
+			// Apply Filter
+			const plotDataFiltered = plotDataUpdate.filter(
+				item => item.x <= maxX && item.y <= maxY
+			)
+
+			setPlotData(plotDataFiltered)
 		}
-	}, [axisX, axisY, props.dataSets, dataSet])
+	}, [axisX, axisY, maxX, maxY, props.dataSets, dataSet])
 
 	return (
 		<div className='chart' data-test='chart'>
 			<div className='bar u-relative'>
 				<div className='bar__content'>
-					<h2 className='heading-secondary u-vertical-center'>{props.title}</h2>
+					<h2 className='heading-secondary u-center'>{props.title}</h2>
+					<button
+						href='#'
+						className='link link-right'
+						onClick={() => props.switchView('Saved Plots')}>
+						Saved Plots &rarr;
+					</button>
 				</div>
 			</div>
 			<Suspense fallback={<div>Loading Configuration...</div>}>
@@ -83,7 +113,10 @@ function Chart(props) {
 					data-test='cpn-configbar'
 					setAxisX={setAxisX}
 					setAxisY={setAxisY}
+					setMaxX={setMaxX}
+					setMaxY={setMaxY}
 					setDataSet={setDataSet}
+					savePlot={savePlot}
 					dataSetOptions={dataSetOptions}
 					columnXOptions={columnXOptions}
 					columnYOptions={columnYOptions}

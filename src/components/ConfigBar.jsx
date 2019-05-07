@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import ConfigDropList from './ConfigDropList'
+import ConfigInput from './ConfigInput'
 import '../css/style.css'
 
 /**
@@ -43,6 +44,13 @@ function ConfigBar(props) {
 						options={props.columnYOptions}
 						handleSelect={props.setAxisY}
 					/>
+					<ConfigInput title='Max X' handleInput={props.setMaxX} />
+					<ConfigInput title='Max Y' handleInput={props.setMaxY} />
+					<div className='config'>
+						<button className='config__btn' onClick={props.savePlot}>
+							save
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>

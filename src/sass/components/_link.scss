@@ -1,0 +1,28 @@
+.link {
+	text-decoration: none;
+	border: none;
+	background-color: transparent;
+	font-size: 2rem;
+	font-weight: 700;
+	color: $color-red;
+	position: absolute;
+	user-select: none;
+	top: 50%;
+	transform: translateY(-50%);
+
+	&-left {
+		left: 2rem;
+	}
+
+	&-right {
+		right: 2rem;
+	}
+
+	&:hover {
+		color: $color-red-dark;
+	}
+
+	&:active {
+		outline: none;
+	}
+}
