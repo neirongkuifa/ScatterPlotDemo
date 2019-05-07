@@ -47,6 +47,7 @@ function PlotCard(props) {
 
 	return (
 		<div
+			key={props.id}
 			draggable='true'
 			onDragStart={handleDrag}
 			onDragOver={handleDragOver}

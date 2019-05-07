@@ -26,7 +26,7 @@ function SavedPlots(props) {
 	const savedPlotsSize = props.savedPlots.length
 	const cols = Math.floor((width * 0.95 - 30) / 350)
 	const rows = Math.ceil(savedPlotsSize / cols)
-	const gutterHorizontal = Math.floor(((width * 0.95 - 30) % 350) / (cols - 1))
+	const gutterHorizontal = Math.floor(((width * 0.95 - 30) % 350) / (cols + 1))
 
 	// Construct Grid
 	const gridRows = []
@@ -36,14 +36,18 @@ function SavedPlots(props) {
 			// If we still have left plots, do the following, otherwise break
 			if (row * cols + col + 1 <= savedPlotsSize) {
 				// If the card is not the last of the row, set margin right to gutterHorizontal
-				const margin = col === cols - 1 ? 0 : gutterHorizontal
+				const marginLeft = col === 0 ? gutterHorizontal : 0
+				const marginRight = gutterHorizontal
 
 				// Locate item in savedPlots
 				const i = props.savedPlots[row * cols + col]
 
 				// Add one col to this row
 				gridCols.push(
-					<div className='card' key={i.id} style={{ marginRight: margin }}>
+					<div
+						className='card'
+						key={i.id}
+						style={{ marginLeft: marginLeft, marginRight: marginRight }}>
 						<Suspense fallback={<div>Loading PlotCard...</div>}>
 							<PlotCard
 								id={i.id}
