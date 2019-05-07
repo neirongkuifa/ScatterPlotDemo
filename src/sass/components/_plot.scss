@@ -21,5 +21,9 @@
 		background-color: $color-grey-light-1;
 		border-radius: 5px;
 		position: relative;
+
+		& .row {
+			margin-bottom: $gutter-vertical;
+		}
 	}
 }

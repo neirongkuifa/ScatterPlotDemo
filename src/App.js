@@ -39,7 +39,13 @@ function App() {
 			/>
 		)
 	} else if (view === 'Saved Plots') {
-		content = <SavedPlots switchView={setView} savedPlots={savedPlots} />
+		content = (
+			<SavedPlots
+				switchView={setView}
+				savedPlots={savedPlots}
+				setSavedPlots={setSavedPlots}
+			/>
+		)
 	}
 
 	return (

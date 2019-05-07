@@ -9,14 +9,38 @@ import {
 } from 'victory'
 
 function PlotCard(props) {
+	console.log('Rerender')
 	const handleDrag = e => {
 		e.dataTransfer.setData('from', props.id)
 		console.log(props.id)
 	}
 	const handleDrop = e => {
 		e.preventDefault()
-		console.log('To: ' + props.id)
-		console.log('From: ' + e.dataTransfer.getData('from'))
+		const to = props.id
+		const from = e.dataTransfer.getData('from')
+		if (to !== from) {
+			props.setSavedPlots(prev => {
+				const fromIndex = prev.findIndex(i => i.id === from)
+				const toIndex = prev.findIndex(i => i.id === to)
+
+				// Reconstruct SavedPlots when drop
+				if (fromIndex < toIndex) {
+					return [].concat(
+						prev.slice(0, fromIndex),
+						prev.slice(fromIndex + 1, toIndex + 1),
+						prev[fromIndex],
+						prev.slice(toIndex + 1)
+					)
+				} else {
+					return [].concat(
+						prev.slice(0, toIndex),
+						prev[fromIndex],
+						prev.slice(toIndex, fromIndex),
+						prev.slice(fromIndex + 1)
+					)
+				}
+			})
+		}
 	}
 
 	const handleDragOver = e => {
@@ -80,4 +104,7 @@ function PlotCard(props) {
 	)
 }
 
-export default PlotCard
+export default React.memo(PlotCard, (prev, next) => {
+	console.log(prev.id === next.id)
+	return prev.id === next.id
+})

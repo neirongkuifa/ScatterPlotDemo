@@ -61,6 +61,8 @@ body {
     background-color: #f7f7f7;
     border-radius: 5px;
     position: relative; }
+    .plot-large__content .row {
+      margin-bottom: 2rem; }
 
 .chart {
   padding-top: 1px;
