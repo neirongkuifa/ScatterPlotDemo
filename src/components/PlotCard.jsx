@@ -9,10 +9,8 @@ import {
 } from 'victory'
 
 function PlotCard(props) {
-	console.log('Rerender')
 	const handleDrag = e => {
 		e.dataTransfer.setData('from', props.id)
-		console.log(props.id)
 	}
 	const handleDrop = e => {
 		e.preventDefault()

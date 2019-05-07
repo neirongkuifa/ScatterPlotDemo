@@ -34,7 +34,7 @@ function SavedPlots(props) {
 		const gridCols = []
 		for (let col = 0; col < cols; col++) {
 			// If we still have left plots, do the following, otherwise break
-			if (row * cols + col + 1 < savedPlotsSize) {
+			if (row * cols + col + 1 <= savedPlotsSize) {
 				// If the card is not the last of the row, set margin right to gutterHorizontal
 				const margin = col === cols - 1 ? 0 : gutterHorizontal
 

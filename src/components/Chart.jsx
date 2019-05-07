@@ -26,17 +26,20 @@ function Chart(props) {
 	const [columnYOptions, setColumnYOptions] = useState([])
 
 	const savePlot = () => {
+		console.log('Here')
 		props.setSavedPlots(prevState => {
-			prevState.push({
-				id: Date.now().toString(),
-				axisX,
-				axisY,
-				maxX,
-				maxY,
-				dataSet,
-				plotData
-			})
-			return prevState
+			return [
+				...prevState,
+				{
+					id: Date.now().toString(),
+					axisX,
+					axisY,
+					maxX,
+					maxY,
+					dataSet,
+					plotData
+				}
+			]
 		})
 	}
 
@@ -97,6 +100,7 @@ function Chart(props) {
 
 	return (
 		<div className='chart' data-test='chart'>
+			{/* Title Bar */}
 			<div className='bar u-relative'>
 				<div className='bar__content'>
 					<h2 className='heading-secondary u-center'>{props.title}</h2>
@@ -108,6 +112,8 @@ function Chart(props) {
 					</button>
 				</div>
 			</div>
+
+			{/* Configration Bar */}
 			<Suspense fallback={<div>Loading Configuration...</div>}>
 				<ConfigBar
 					data-test='cpn-configbar'
@@ -122,6 +128,8 @@ function Chart(props) {
 					columnYOptions={columnYOptions}
 				/>
 			</Suspense>
+
+			{/* Plot */}
 			<Suspense fallback={<div>Loading Plot...</div>}>
 				<Plot plotData={plotData} x={axisX} y={axisY} data-test='cpn-plot' />
 			</Suspense>
