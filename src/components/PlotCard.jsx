@@ -9,9 +9,26 @@ import {
 } from 'victory'
 
 function PlotCard(props) {
+	const handleDrag = e => {
+		e.dataTransfer.setData('from', props.id)
+		console.log(props.id)
+	}
+	const handleDrop = e => {
+		e.preventDefault()
+		console.log('To: ' + props.id)
+		console.log('From: ' + e.dataTransfer.getData('from'))
+	}
+
+	const handleDragOver = e => {
+		e.preventDefault()
+	}
+
 	return (
 		<div
 			draggable='true'
+			onDragStart={handleDrag}
+			onDragOver={handleDragOver}
+			onDrop={handleDrop}
 			className='card__content'
 			onClick={() =>
 				props.handleClick({

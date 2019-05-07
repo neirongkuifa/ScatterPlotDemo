@@ -64,8 +64,8 @@ body {
 
 .chart {
   padding-top: 1px;
-  width: 85vw;
-  height: 80vh;
+  width: 95vw;
+  height: 85vh;
   margin: 5rem auto;
   border-radius: 5px;
   box-shadow: 1rem 2rem 4rem rgba(0, 0, 0, 0.2); }

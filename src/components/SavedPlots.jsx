@@ -39,6 +39,7 @@ function SavedPlots(props) {
 							<div className='card' key={i.id}>
 								<Suspense fallback={<div>Loading PlotCard...</div>}>
 									<PlotCard
+										id={i.id}
 										x={i.axisX}
 										y={i.axisY}
 										plotData={i.plotData}
