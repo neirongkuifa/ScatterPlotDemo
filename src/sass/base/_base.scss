@@ -13,6 +13,7 @@ html {
 body {
 	padding: 3rem;
 	box-sizing: border-box;
+	min-width: $card-width;
 }
 
 .VictoryContainer > svg {

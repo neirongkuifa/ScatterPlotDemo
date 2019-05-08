@@ -5,6 +5,7 @@
 	user-select: none;
 	box-shadow: 0 1rem 2rem rgba($color-black, 0.3);
 	position: relative;
+	margin-bottom: 2rem;
 
 	&__content {
 		height: 100%;
@@ -29,5 +30,6 @@
 		top: 4rem;
 		right: 5rem;
 		user-select: none;
+		z-index: 999;
 	}
 }

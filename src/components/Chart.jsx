@@ -108,7 +108,7 @@ function Chart(props) {
 						href='#'
 						className='link link-right'
 						onClick={() => props.switchView('Saved Plots')}>
-						Saved Plots &rarr;
+						Saved &rarr;
 					</button>
 				</div>
 			</div>

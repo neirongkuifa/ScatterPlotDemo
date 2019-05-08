@@ -104,6 +104,5 @@ function PlotCard(props) {
 }
 
 export default React.memo(PlotCard, (prev, next) => {
-	console.log(prev.id === next.id)
 	return prev.id === next.id
 })

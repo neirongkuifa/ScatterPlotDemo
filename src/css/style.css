@@ -10,7 +10,8 @@ html {
 
 body {
   padding: 3rem;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  min-width: 35rem; }
 
 .VictoryContainer > svg {
   overflow: visible; }
@@ -125,7 +126,8 @@ body {
   height: 20rem;
   user-select: none;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
-  position: relative; }
+  position: relative;
+  margin-bottom: 2rem; }
   .card__content {
     height: 100%;
     width: 100%; }
@@ -145,4 +147,5 @@ body {
     color: red;
     top: 4rem;
     right: 5rem;
-    user-select: none; }
+    user-select: none;
+    z-index: 999; }

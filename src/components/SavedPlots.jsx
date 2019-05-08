@@ -12,7 +12,7 @@ function SavedPlots(props) {
 		// Use debounce to control function invokation times
 		const handleResize = debounce(() => {
 			setWidth(window.innerWidth)
-		}, 100)
+		}, 30)
 
 		window.addEventListener('resize', handleResize)
 
@@ -22,6 +22,12 @@ function SavedPlots(props) {
 		}
 	}, [])
 
+	const handleClose = e => {
+		console.log('Clicked!')
+		e.stopPropagation()
+		setInspect(null)
+	}
+
 	// Calculate Grid
 	const savedPlotsSize = props.savedPlots.length
 	const cols = Math.floor((width * 0.95 - 30) / 350)
@@ -29,9 +35,8 @@ function SavedPlots(props) {
 	const gutterHorizontal = Math.floor(((width * 0.95 - 30) % 350) / (cols + 1))
 
 	// Construct Grid
-	const gridRows = []
+	const grid = []
 	for (let row = 0; row < rows; row++) {
-		const gridCols = []
 		for (let col = 0; col < cols; col++) {
 			// If we still have left plots, do the following, otherwise break
 			if (row * cols + col + 1 <= savedPlotsSize) {
@@ -43,7 +48,7 @@ function SavedPlots(props) {
 				const i = props.savedPlots[row * cols + col]
 
 				// Add one col to this row
-				gridCols.push(
+				grid.push(
 					<div
 						className='card'
 						key={i.id}
@@ -64,13 +69,6 @@ function SavedPlots(props) {
 				break
 			}
 		}
-
-		// Add one row to grid rows
-		gridRows.push(
-			<div className='row' key={`${cols} ${row}`}>
-				{gridCols}
-			</div>
-		)
 	}
 
 	return (
@@ -94,9 +92,7 @@ function SavedPlots(props) {
 					{/* If it's in inspect mode, show the expanded card in inspect, and hide all other plots */}
 					{inspect === null ? null : (
 						<div className='card-expand'>
-							<div
-								className='card-expand__close'
-								onClick={() => setInspect(null)}>
+							<div className='card-expand__close' onClick={handleClose}>
 								&times;
 							</div>
 							<PlotCard
@@ -110,7 +106,7 @@ function SavedPlots(props) {
 
 					{/* If it's not in inspect mode, show all plots */}
 					<div className={inspect === null ? null : 'u-hide'}>
-						{gridRows}
+						{grid}
 						{/* {props.savedPlots.map(i => (
 							<div className='card' key={i.id}>
 								<Suspense fallback={<div>Loading PlotCard...</div>}>
