@@ -8,7 +8,7 @@ SavedPlots -- Container for PlotCard
 
 ## Overall Effect
 
-![](./effect.gif)
+![](./demo.gif)
 
 ## Available Scripts
 
