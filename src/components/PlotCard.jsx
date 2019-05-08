@@ -96,7 +96,7 @@ function PlotCard(props) {
 					<VictoryContainer
 						style={{
 							margin: 'auto',
-							width: '85%',
+							width: props.size || '85%',
 							padding: '1.5rem 0 0 0'
 						}}
 					/>
@@ -132,12 +132,13 @@ function PlotCard(props) {
 
 // PropTypes Check
 PlotCard.propTypes = {
+	size: PropTypes.string,
 	id: PropTypes.string,
 	x: PropTypes.string,
 	y: PropTypes.string,
-	maxX: PropTypes.string,
-	maxY: PropTypes.string,
-	dataSet: PropTypes.array,
+	maxX: PropTypes.number,
+	maxY: PropTypes.number,
+	dataSet: PropTypes.string,
 	plotData: PropTypes.array,
 	setSavedPlots: PropTypes.func,
 	handleClick: PropTypes.func

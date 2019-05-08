@@ -97,10 +97,14 @@ function SavedPlots(props) {
 								&times;
 							</div>
 							<div className='u-text'>
-								dataSet: {inspect.dataSet} columnX: {inspect.x} columnY:{' '}
-								{inspect.y} Max X: {inspect.maxX} Max Y:{inspect.maxY}
+								<div className='config'>dataSet: {inspect.dataSet}</div>
+								<div className='config'>columnX: {inspect.x}</div>
+								<div className='config'>columnY: {inspect.y}</div>
+								<div className='config'> Max X: {inspect.maxX}</div>
+								<div className='config'>Max Y: {inspect.maxY}</div>
 							</div>
 							<PlotCard
+								size='70%'
 								x={inspect.x}
 								y={inspect.y}
 								plotData={inspect.plotData}
