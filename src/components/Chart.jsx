@@ -13,18 +13,27 @@ const Plot = React.lazy(() => import('./Plot'))
  * @returns {object}
  */
 function Chart(props) {
+	// Configuration States
 	const [dataSet, setDataSet] = useState('')
 	const [axisX, setAxisX] = useState('')
 	const [axisY, setAxisY] = useState('')
 	const [maxX, setMaxX] = useState(Number.POSITIVE_INFINITY)
 	const [maxY, setMaxY] = useState(Number.POSITIVE_INFINITY)
 
+	// PlotData State
 	const [plotData, setPlotData] = useState([])
 
+	// Dropdown list options States
 	const [dataSetOptions, setDataSetOptions] = useState([])
 	const [columnXOptions, setColumnXOptions] = useState([])
 	const [columnYOptions, setColumnYOptions] = useState([])
 
+	/**
+	 * Function to save plot data
+	 * @function savePlot
+	 * @param {null}
+	 * @returns {object[]} - Array of plot data and configs
+	 */
 	const savePlot = () => {
 		props.setSavedPlots(prevState => {
 			return [
@@ -88,7 +97,7 @@ function Chart(props) {
 				}
 			})
 
-			// Apply Filter
+			// Apply Max Filter
 			const plotDataFiltered = plotDataUpdate.filter(
 				item => item.x <= maxX && item.y <= maxY
 			)

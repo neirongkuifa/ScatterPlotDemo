@@ -1,8 +1,20 @@
 import React, { useState } from 'react'
 
+/**
+ * Function component to set column limit
+ * @function ConfigInput
+ * @param {*} props
+ * @returns {object}
+ */
 function ConfigInput(props) {
+	// Input Control State
 	const [value, setValue] = useState('')
 
+	/**
+	 * function to handle input. on input change, update control state and set configuration state
+	 * @function handleInput
+	 * @param {*} input
+	 */
 	const handleInput = input => {
 		setValue(input.toString())
 

@@ -8,10 +8,27 @@ import {
 	VictoryLegend
 } from 'victory'
 
+/**
+ * Function component that represents a draggable plot card
+ * @function PlotCard
+ * @param {*} props
+ * @returns {object}
+ */
 function PlotCard(props) {
+	/**
+	 * function to handle ondragstart event. set data from for drop receiver element
+	 * @function handleDrag
+	 * @param {*} e
+	 */
 	const handleDrag = e => {
 		e.dataTransfer.setData('from', props.id)
 	}
+
+	/**
+	 * function to handle ondrop event. on drop, we rearrange savedPlots and rerender
+	 * @function handleDrop
+	 * @param {*} e
+	 */
 	const handleDrop = e => {
 		e.preventDefault()
 		const to = props.id
@@ -41,6 +58,11 @@ function PlotCard(props) {
 		}
 	}
 
+	/**
+	 * function to enable drop element
+	 * @function handleDragOver
+	 * @param {*} e
+	 */
 	const handleDragOver = e => {
 		// Enable Drop Element
 		e.preventDefault()
@@ -58,12 +80,14 @@ function PlotCard(props) {
 				props.handleClick({
 					plotData: props.plotData,
 					x: props.x,
-					y: props.y
+					y: props.y,
+					maxX: props.maxX,
+					maxY: props.maxY,
+					dataSet: props.dataSet
 				})
 			}>
 			<VictoryChart
 				theme={VictoryTheme.material}
-				// style={{ parent: { maxWidth: '70%' } }}
 				width={900}
 				height={500}
 				containerComponent={

@@ -11,6 +11,12 @@ import {
 
 import '../css/style.css'
 
+/**
+ * Function component to plot data on chart
+ * @function Plot
+ * @param {*} props
+ * @returns {object}
+ */
 function Plot(props) {
 	return (
 		<div className='plot' data-test='plot'>

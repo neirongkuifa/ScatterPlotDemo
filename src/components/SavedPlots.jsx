@@ -2,17 +2,26 @@ import React, { useState, useEffect, Suspense } from 'react'
 
 const PlotCard = React.lazy(() => import('./PlotCard'))
 
+/**
+ * Function component -- Display Saved Plots
+ * @function SavedPlots
+ * @param {*} props
+ * @returns {object}
+ */
 function SavedPlots(props) {
+	// Inpect Plot State
 	const [inspect, setInspect] = useState(null)
+
+	// Window Width State
 	const [width, setWidth] = useState(window.innerWidth)
 
-	// On component did mount, add windown resize listener
 	useEffect(() => {
-		// Use debounce to control function invokation times
+		// For performace enhancement, we can do debounce here. But it will cause flickering issue.
 		const handleResize = () => {
 			setWidth(window.innerWidth)
 		}
 
+		// On component did mount, add windown resize listener
 		window.addEventListener('resize', handleResize)
 
 		// On component will unmount, remove listener
@@ -21,6 +30,11 @@ function SavedPlots(props) {
 		}
 	}, [])
 
+	/**
+	 * Function to handle close click event
+	 * @function handleClose
+	 * @param {object} e -- click event object
+	 */
 	const handleClose = e => {
 		e.stopPropagation()
 		setInspect(null)
@@ -36,6 +50,8 @@ function SavedPlots(props) {
 			className='card'
 			key={i.id}
 			style={{
+				// For the first column of each row set margin left and right to gutter size
+				// For the rest columns of each row set margin left to 0, right to gutter size
 				marginLeft: index % cols === 0 ? gutterHorizontal : 0,
 				marginRight: gutterHorizontal
 			}}>
@@ -44,6 +60,9 @@ function SavedPlots(props) {
 					id={i.id}
 					x={i.axisX}
 					y={i.axisY}
+					maxX={i.maxX}
+					maxY={i.maxY}
+					dataSet={i.dataSet}
 					plotData={i.plotData}
 					setSavedPlots={props.setSavedPlots}
 					handleClick={setInspect}
@@ -75,6 +94,10 @@ function SavedPlots(props) {
 						<div className='card-expand'>
 							<div className='card-expand__close' onClick={handleClose}>
 								&times;
+							</div>
+							<div className='u-text'>
+								dataSet: {inspect.dataSet} columnX: {inspect.x} columnY:{' '}
+								{inspect.y} Max X: {inspect.maxX} Max Y:{inspect.maxY}
 							</div>
 							<PlotCard
 								x={inspect.x}
