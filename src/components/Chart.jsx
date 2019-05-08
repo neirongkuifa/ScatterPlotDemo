@@ -98,7 +98,7 @@ function Chart(props) {
 	}, [axisX, axisY, maxX, maxY, props.dataSets, dataSet])
 
 	return (
-		<div className='chart' data-test='chart'>
+		<div className={'chart'} data-test='chart'>
 			{/* Title Bar */}
 			<div className='bar u-relative'>
 				<div className='bar__content'>
