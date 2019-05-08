@@ -61,8 +61,8 @@ function SavedPlots(props) {
 					id={i.id}
 					x={i.axisX}
 					y={i.axisY}
-					maxX={i.maxX}
-					maxY={i.maxY}
+					maxX={i.maxX.toString()}
+					maxY={i.maxY.toString()}
 					dataSet={i.dataSet}
 					plotData={i.plotData}
 					setSavedPlots={props.setSavedPlots}
