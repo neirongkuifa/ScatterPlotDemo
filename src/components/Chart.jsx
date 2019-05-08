@@ -26,7 +26,6 @@ function Chart(props) {
 	const [columnYOptions, setColumnYOptions] = useState([])
 
 	const savePlot = () => {
-		console.log('Here')
 		props.setSavedPlots(prevState => {
 			return [
 				...prevState,

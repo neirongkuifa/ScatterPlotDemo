@@ -23,7 +23,6 @@ function SavedPlots(props) {
 	}, [])
 
 	const handleClose = e => {
-		console.log('Clicked!')
 		e.stopPropagation()
 		setInspect(null)
 	}
@@ -35,41 +34,42 @@ function SavedPlots(props) {
 	const gutterHorizontal = Math.floor(((width * 0.95 - 30) % 350) / (cols + 1))
 
 	// Construct Grid
-	const grid = []
+	const marginGrid = []
 	for (let row = 0; row < rows; row++) {
 		for (let col = 0; col < cols; col++) {
 			// If we still have left plots, do the following, otherwise break
 			if (row * cols + col + 1 <= savedPlotsSize) {
-				// If the card is not the last of the row, set margin right to gutterHorizontal
+				// Calculate margin for each card
 				const marginLeft = col === 0 ? gutterHorizontal : 0
 				const marginRight = gutterHorizontal
-
-				// Locate item in savedPlots
-				const i = props.savedPlots[row * cols + col]
-
 				// Add one col to this row
-				grid.push(
-					<div
-						className='card'
-						key={i.id}
-						style={{ marginLeft: marginLeft, marginRight: marginRight }}>
-						<Suspense fallback={<div>Loading PlotCard...</div>}>
-							<PlotCard
-								id={i.id}
-								x={i.axisX}
-								y={i.axisY}
-								plotData={i.plotData}
-								setSavedPlots={props.setSavedPlots}
-								handleClick={setInspect}
-							/>
-						</Suspense>
-					</div>
-				)
+				marginGrid.push({ left: marginLeft, right: marginRight })
 			} else {
 				break
 			}
 		}
 	}
+
+	const grid = props.savedPlots.map((i, index) => (
+		<div
+			className='card'
+			key={i.id}
+			style={{
+				marginLeft: marginGrid[index].left,
+				marginRight: marginGrid[index].right
+			}}>
+			<Suspense fallback={<div>Loading PlotCard...</div>}>
+				<PlotCard
+					id={i.id}
+					x={i.axisX}
+					y={i.axisY}
+					plotData={i.plotData}
+					setSavedPlots={props.setSavedPlots}
+					handleClick={setInspect}
+				/>
+			</Suspense>
+		</div>
+	))
 
 	return (
 		<div className='chart u-relative'>
@@ -105,23 +105,7 @@ function SavedPlots(props) {
 					)}
 
 					{/* If it's not in inspect mode, show all plots */}
-					<div className={inspect === null ? null : 'u-hide'}>
-						{grid}
-						{/* {props.savedPlots.map(i => (
-							<div className='card' key={i.id}>
-								<Suspense fallback={<div>Loading PlotCard...</div>}>
-									<PlotCard
-										id={i.id}
-										x={i.axisX}
-										y={i.axisY}
-										plotData={i.plotData}
-										setSavedPlots={props.setSavedPlots}
-										handleClick={setInspect}
-									/>
-								</Suspense>
-							</div>
-						))} */}
-					</div>
+					<div className={inspect === null ? null : 'u-hide'}>{grid}</div>
 				</div>
 			</div>
 		</div>
