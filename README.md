@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## New Components
+
+ConfigInput -- For setting max value
+
+PlotCard -- For displaying a saved plot in a grid
+
+SavedPlots -- Container for PlotCard
 
 ## Overall Effect
 
