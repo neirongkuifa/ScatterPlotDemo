@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 /**
  * Function component to set column limit
@@ -27,7 +28,7 @@ function ConfigInput(props) {
 	}
 
 	return (
-		<div className='config'>
+		<div className='config' data-test='cpn-configinput'>
 			<span className='config__title'>{props.title}: </span>
 			<input
 				className='config__input'
@@ -37,6 +38,12 @@ function ConfigInput(props) {
 			/>
 		</div>
 	)
+}
+
+// PropTypes Chec
+ConfigInput.propTypes = {
+	title: PropTypes.string,
+	handleInput: PropTypes.func
 }
 
 export default ConfigInput

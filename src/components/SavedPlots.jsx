@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react'
+import PropTypes from 'prop-types'
 
 const PlotCard = React.lazy(() => import('./PlotCard'))
 
@@ -72,7 +73,7 @@ function SavedPlots(props) {
 	))
 
 	return (
-		<div className={'chart u-relative'}>
+		<div className={'chart u-relative'} data-test='cpn-savedplots'>
 			{/* Title Bar */}
 			<div className='bar u-relative'>
 				<div className='bar__content'>
@@ -114,6 +115,13 @@ function SavedPlots(props) {
 			</div>
 		</div>
 	)
+}
+
+// PropTypes Check
+SavedPlots.propTypes = {
+	switchView: PropTypes.func,
+	savedPlots: PropTypes.array,
+	setSavedPlots: PropTypes.func
 }
 
 export default SavedPlots

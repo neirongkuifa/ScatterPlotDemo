@@ -148,7 +148,9 @@ function Chart(props) {
 // PropTypes Check
 Chart.propTypes = {
 	title: PropTypes.string.isRequired,
-	dataSets: PropTypes.object.isRequired
+	dataSets: PropTypes.object.isRequired,
+	switchView: PropTypes.func.isRequired,
+	setSavedPlots: PropTypes.func.isRequired
 }
 
 export default Chart

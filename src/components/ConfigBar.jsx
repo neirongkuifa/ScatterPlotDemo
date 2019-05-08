@@ -61,7 +61,10 @@ function ConfigBar(props) {
 ConfigBar.propTypes = {
 	setAxisX: PropTypes.func.isRequired,
 	setAxisY: PropTypes.func.isRequired,
+	setMaxX: PropTypes.func,
+	setMaxY: PropTypes.func,
 	setDataSet: PropTypes.func.isRequired,
+	savePlot: PropTypes.func,
 	dataSetOptions: PropTypes.array.isRequired,
 	columnXOptions: PropTypes.array.isRequired,
 	columnYOptions: PropTypes.array.isRequired

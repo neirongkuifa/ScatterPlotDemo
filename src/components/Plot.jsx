@@ -23,7 +23,6 @@ function Plot(props) {
 			<div className='plot__content'>
 				<VictoryChart
 					theme={VictoryTheme.material}
-					// style={{ parent: { maxWidth: '70%' } }}
 					width={900}
 					height={500}
 					containerComponent={

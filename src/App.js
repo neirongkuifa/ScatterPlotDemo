@@ -28,24 +28,6 @@ function App() {
 	}, [])
 
 	let content
-	// = (
-	// 	<>
-	// 		<Chart
-	// 			view={view}
-	// 			title='Analytics'
-	// 			dataSets={dataSets}
-	// 			data-test='cpn-chart'
-	// 			switchView={setView}
-	// 			setSavedPlots={setSavedPlots}
-	// 		/>
-	// 		<SavedPlots
-	// 			view={view}
-	// 			switchView={setView}
-	// 			savedPlots={savedPlots}
-	// 			setSavedPlots={setSavedPlots}
-	// 		/>
-	// 	</>
-	// )
 	if (view === 'Analytics') {
 		content = (
 			<Chart

@@ -7,6 +7,7 @@ import {
 	VictoryContainer,
 	VictoryLegend
 } from 'victory'
+import PropTypes from 'prop-types'
 
 /**
  * Function component that represents a draggable plot card
@@ -70,6 +71,7 @@ function PlotCard(props) {
 
 	return (
 		<div
+			data-test='cpn-plotcard'
 			key={props.id}
 			draggable='true'
 			onDragStart={handleDrag}
@@ -126,6 +128,19 @@ function PlotCard(props) {
 			</VictoryChart>
 		</div>
 	)
+}
+
+// PropTypes Check
+PlotCard.propTypes = {
+	id: PropTypes.string,
+	x: PropTypes.string,
+	y: PropTypes.string,
+	maxX: PropTypes.string,
+	maxY: PropTypes.string,
+	dataSet: PropTypes.array,
+	plotData: PropTypes.array,
+	setSavedPlots: PropTypes.func,
+	handleClick: PropTypes.func
 }
 
 export default React.memo(PlotCard, (prev, next) => {
