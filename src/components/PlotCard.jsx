@@ -16,7 +16,6 @@ import PropTypes from 'prop-types'
  * @returns {object}
  */
 function PlotCard(props) {
-	console.log('render')
 	/**
 	 * function to handle ondragstart event. set data from for drop receiver element
 	 * @function handleDrag
