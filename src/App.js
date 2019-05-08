@@ -27,6 +27,8 @@ function App() {
 		})
 	}, [])
 
+	// Here we can simply hide view when switch so that it won't be unmount hence speed up swtich
+	// But if you don't need frequent switch, it's not necessary to occupy extra memory for hidden view
 	let content
 	if (view === 'Analytics') {
 		content = (
