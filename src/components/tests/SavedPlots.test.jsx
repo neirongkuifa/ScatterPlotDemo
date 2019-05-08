@@ -8,7 +8,9 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe('ConfigInput', () => {
 	it('renders without crashing', () => {
-		const wrapper = shallow(<SavedPlots savedPlots={[{ id: 1 }, { id: 2 }]} />)
+		const wrapper = shallow(
+			<SavedPlots savedPlots={[{ id: 1, maxX: 10, maxY: 20 }]} />
+		)
 		const component = wrapper.find("[data-test='cpn-savedplots']")
 		expect(component.length).toBe(1)
 	})

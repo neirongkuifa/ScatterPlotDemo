@@ -16,6 +16,7 @@ import PropTypes from 'prop-types'
  * @returns {object}
  */
 function PlotCard(props) {
+	console.log('render')
 	/**
 	 * function to handle ondragstart event. set data from for drop receiver element
 	 * @function handleDrag
@@ -72,7 +73,6 @@ function PlotCard(props) {
 	return (
 		<div
 			data-test='cpn-plotcard'
-			key={props.id}
 			draggable='true'
 			onDragStart={handleDrag}
 			onDragOver={handleDragOver}
