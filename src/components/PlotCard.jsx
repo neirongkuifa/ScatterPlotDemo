@@ -42,6 +42,7 @@ function PlotCard(props) {
 	}
 
 	const handleDragOver = e => {
+		// Enable Drop Element
 		e.preventDefault()
 	}
 
